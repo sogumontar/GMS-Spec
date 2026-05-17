@@ -1,4 +1,0 @@
-[submodule "GMS-FE"]
-    path = GMS-FE
-    url = https://github.com/sogumontar/GMS-FE
-    branch = master-fe
