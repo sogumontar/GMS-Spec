@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Aplikasi PPPK - Biodata &amp; Formasi</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#002147",
+                        "secondary": "#735c00",
+                        "on-secondary-container": "#745c00",
+                        "on-secondary-fixed": "#241a00",
+                        "on-background": "#1a1c1c",
+                        "on-tertiary-fixed": "#001d34",
+                        "inverse-primary": "#aec7f6",
+                        "on-primary-fixed": "#001b3d",
+                        "outline-variant": "#c4c6cf",
+                        "tertiary": "#000b19",
+                        "inverse-surface": "#2f3131",
+                        "surface-tint": "#465f88",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#558dc2",
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary-container": "#708ab5",
+                        "primary": "#000a1e",
+                        "primary-fixed-dim": "#aec7f6",
+                        "background": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "tertiary-container": "#00233d",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#004a78",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-surface": "#1a1c1c",
+                        "secondary-fixed-dim": "#e9c349",
+                        "tertiary-fixed-dim": "#9acbff",
+                        "surface-bright": "#f9f9f9",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed": "#ffe088",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-container-low": "#f3f3f3",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#fed65b",
+                        "outline": "#74777f",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dadada",
+                        "on-secondary-fixed-variant": "#574500",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#cfe5ff",
+                        "surface-container-high": "#e8e8e8",
+                        "surface": "#f9f9f9",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#44474e",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter-desktop": "32px",
+                        "base": "8px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "gutter-mobile": "16px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    <style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col antialiased">
+<!-- Navigation Drawer (Desktop) -->
+<nav class="fixed left-0 top-0 h-full z-40 hidden md:flex flex-col bg-surface-container-low dark:bg-surface-container-highest border-r border-outline-variant dark:border-outline h-full w-72">
+    <div class="p-6">
+        <h2 class="font-headline-md text-headline-md text-primary-container font-bold mb-8">Portal Pengadaan PPPK</h2>
+        <div class="flex items-center gap-4 mb-8 pb-6 border-b border-outline-variant">
+            <div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-primary-container overflow-hidden">
+                <img alt="User Profile Picture" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKFM4OtlGDLrY35Dill3aC7HnzOOlVg8hv7_Y7bkP9LDbXF7xSIOpjp6R7w7sjfvD6UuEWGMxc659v-1ace8G1Xs-vpoUQ5GW7M2D9PkfGFbki0WejhtqG5kvy15OM-i3_5m7W_IO5zbPvmjslh1t_rCEKyoZXIydgvUlJtFl81egEtalANJRjtBVpD5nj6KelnhTm8IvJYmI_ttwqwZEFgZcKh9L6dcBE53BQRBcssIA45WI1bzZE-kFQSgmGOMrosy4nBR28WCA"/>
+            </div>
+            <div>
+                <p class="font-label-lg text-label-lg text-on-surface">Ahmad Sudrajat</p>
+                <p class="font-body-md text-body-md text-on-surface-variant text-sm">Pelamar Umum</p>
+                <p class="font-label-sm text-label-sm text-on-surface-variant">NIP: 198502...</p>
+            </div>
+        </div>
+        <ul class="flex flex-col gap-2">
+            <li>
+                <a class="text-on-surface-variant dark:text-outline-variant px-4 py-3 mx-2 my-1 flex items-center gap-4 hover:bg-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-label-lg text-label-lg" href="#">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a class="bg-secondary-container text-on-secondary-container font-bold rounded-lg px-4 py-3 mx-2 my-1 flex items-center gap-4 hover:bg-surface-container-high transition-all font-label-lg text-label-lg" href="#">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+                    Biodata
+                </a>
+            </li>
+            <li>
+                <a class="text-on-surface-variant dark:text-outline-variant px-4 py-3 mx-2 my-1 flex items-center gap-4 hover:bg-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-label-lg text-label-lg" href="#">
+                    <span class="material-symbols-outlined">edit_note</span>
+                    Pendaftaran
+                </a>
+            </li>
+            <li>
+                <a class="text-on-surface-variant dark:text-outline-variant px-4 py-3 mx-2 my-1 flex items-center gap-4 hover:bg-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-label-lg text-label-lg" href="#">
+                    <span class="material-symbols-outlined">cloud_upload</span>
+                    Dokumen
+                </a>
+            </li>
+            <li>
+                <a class="text-on-surface-variant dark:text-outline-variant px-4 py-3 mx-2 my-1 flex items-center gap-4 hover:bg-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-label-lg text-label-lg" href="#">
+                    <span class="material-symbols-outlined">description</span>
+                    Resume
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="md:ml-72 flex-1 flex flex-col">
+    <!-- TopAppBar (Visible mostly on mobile or as main header area) -->
+    <header class="bg-surface dark:bg-surface-container border-b border-outline-variant dark:border-outline w-full sticky top-0 z-30">
+        <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+            <div class="flex items-center gap-4 md:hidden">
+                <span class="material-symbols-outlined text-primary-container">account_balance</span>
+                <span class="font-headline-md text-headline-md font-bold text-primary-container dark:text-primary-fixed">Portal Pengadaan PPPK</span>
+            </div>
+            <div class="hidden md:block">
+                <h1 class="font-headline-md text-headline-md text-on-surface">Lengkapi Data Aplikasi</h1>
+            </div>
+            <div>
+                <span class="material-symbols-outlined text-primary-container text-3xl">account_circle</span>
+            </div>
+        </div>
+    </header>
+    <!-- Main Form Content -->
+    <main class="flex-1 px-margin-mobile md:px-margin-desktop py-8 md:py-12 max-w-container-max mx-auto w-full">
+        <div class="mb-8">
+            <h2 class="font-display-lg-mobile md:font-display-lg text-primary-container mb-2">Formulir Pendaftaran</h2>
+            <p class="font-body-lg text-body-lg text-on-surface-variant">Harap isi data diri dan pilih formasi tujuan Anda dengan saksama. Pastikan data sesuai dengan dokumen resmi.</p>
+        </div>
+        <form action="#" class="flex flex-col gap-8" method="POST">
+            <!-- Section 1: Biodata -->
+            <section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+                <div class="bg-surface-container-low px-6 py-4 border-b border-outline-variant flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary-container">person_check</span>
+                    <h3 class="font-headline-md text-headline-md text-primary-container">Informasi Biodata</h3>
+                </div>
+                <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                    <div class="flex flex-col gap-2">
+                        <label class="font-label-lg text-label-lg text-on-surface" for="gelar_depan">Gelar Depan <span class="text-on-surface-variant font-normal text-sm">(Opsional)</span></label>
+                        <input class="w-full border border-outline-variant rounded px-4 py-[16px] font-body-md text-body-md text-on-surface bg-surface-bright focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" id="gelar_depan" name="gelar_depan" placeholder="Contoh: Dr., Prof." type="text"/>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="font-label-lg text-label-lg text-on-surface" for="gelar_belakang">Gelar Belakang <span class="text-on-surface-variant font-normal text-sm">(Opsional)</span></label>
+                        <input class="w-full border border-outline-variant rounded px-4 py-[16px] font-body-md text-body-md text-on-surface bg-surface-bright focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" id="gelar_belakang" name="gelar_belakang" placeholder="Contoh: S.Kom., M.Si." type="text"/>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <label class="font-label-lg text-label-lg text-on-surface">Jenis Kelamin</label>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <label class="flex items-center gap-3 p-4 border border-outline-variant rounded cursor-pointer hover:border-primary-container flex-1 bg-surface-bright">
+                                <input class="w-5 h-5 text-primary-container border-outline-variant focus:ring-primary-container" name="jenis_kelamin" type="radio" value="pria"/>
+                                <span class="font-body-md text-body-md text-on-surface">Pria</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 border border-outline-variant rounded cursor-pointer hover:border-primary-container flex-1 bg-surface-bright">
+                                <input class="w-5 h-5 text-primary-container border-outline-variant focus:ring-primary-container" name="jenis_kelamin" type="radio" value="wanita"/>
+                                <span class="font-body-md text-body-md text-on-surface">Wanita</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="font-label-lg text-label-lg text-on-surface" for="agama">Agama</label>
+                        <select class="w-full border border-outline-variant rounded px-4 py-[16px] font-body-md text-body-md text-on-surface bg-surface-bright focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors appearance-none" id="agama" name="agama">
+                            <option disabled="" selected="" value="">Pilih Agama</option>
+                            <option value="islam">Islam</option>
+                            <option value="kristen">Kristen</option>
+                            <option value="katolik">Katolik</option>
+                            <option value="hindu">Hindu</option>
+                            <option value="buddha">Buddha</option>
+                            <option value="konghucu">Konghucu</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-2 md:col-span-2">
+                        <label class="font-label-lg text-label-lg text-on-surface" for="alamat_ktp">Alamat Sesuai KTP</label>
+                        <textarea class="w-full border border-outline-variant rounded px-4 py-4 font-body-md text-body-md text-on-surface bg-surface-bright focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors resize-y" id="alamat_ktp" name="alamat_ktp" placeholder="Masukkan alamat lengkap sesuai KTP..." rows="3"></textarea>
+                    </div>
+                    <div class="flex flex-col gap-2 md:col-span-2">
+                        <label class="font-label-lg text-label-lg text-on-surface" for="alamat_domisili">Alamat Domisili Saat Ini</label>
+                        <textarea class="w-full border border-outline-variant rounded px-4 py-4 font-body-md text-body-md text-on-surface bg-surface-bright focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors resize-y" id="alamat_domisili" name="alamat_domisili" placeholder="Masukkan alamat tempat tinggal saat ini..." rows="3"></textarea>
+                    </div>
+                </div>
+            </section>
+            <!-- Section 2: Pemilihan Formasi -->
+            <section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+                <div class="bg-surface-container-low px-6 py-4 border-b border-outline-variant flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary-container">work</span>
+                    <h3 class="font-headline-md text-headline-md text-primary-container">Pemilihan Formasi</h3>
+                </div>
+                <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                    <div class="flex flex-col gap-2 md:col-span-2">
+                        <label class="font-label-lg text-label-lg text-on-surface" for="instansi">Instansi Tujuan</label>
+                        <select class="w-full border border-outline-variant rounded px-4 py-[16px] font-body-md text-body-md text-on-surface bg-surface-bright focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors appearance-none" id="instansi" name="instansi">
+                            <option disabled="" selected="" value="">Pilih Instansi...</option>
+                            <option value="kemenkeu">Kementerian Keuangan</option>
+                            <option value="kemdikbud">Kementerian Pendidikan dan Kebudayaan</option>
+                            <option value="kemenkes">Kementerian Kesehatan</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="font-label-lg text-label-lg text-on-surface" for="jenis_formasi">Jenis Formasi</label>
+                        <select class="w-full border border-outline-variant rounded px-4 py-[16px] font-body-md text-body-md text-on-surface bg-surface-bright focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors appearance-none" id="jenis_formasi" name="jenis_formasi">
+                            <option disabled="" selected="" value="">Pilih Jenis Formasi...</option>
+                            <option value="umum">Umum</option>
+                            <option value="khusus">Khusus (Disabilitas/Putra-Putri Papua)</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="font-label-lg text-label-lg text-on-surface" for="jabatan">Jabatan</label>
+                        <select class="w-full border border-outline-variant rounded px-4 py-[16px] font-body-md text-body-md text-on-surface bg-surface-bright focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors appearance-none" id="jabatan" name="jabatan">
+                            <option disabled="" selected="" value="">Pilih Jabatan...</option>
+                            <option value="ahli_pertama">Ahli Pertama - Pranata Komputer</option>
+                            <option value="terampil">Terampil - Pranata Sumber Daya Manusia</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-2 md:col-span-2">
+                        <label class="font-label-lg text-label-lg text-on-surface" for="lokasi">Lokasi Penempatan</label>
+                        <select class="w-full border border-outline-variant rounded px-4 py-[16px] font-body-md text-body-md text-on-surface bg-surface-bright focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors appearance-none" id="lokasi" name="lokasi">
+                            <option disabled="" selected="" value="">Pilih Lokasi Penempatan...</option>
+                            <option value="pusat">Kantor Pusat - Jakarta</option>
+                            <option value="kanwil_jabar">Kanwil Provinsi Jawa Barat</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row-reverse gap-4 mt-4 border-t border-outline-variant pt-8">
+                <button class="bg-secondary-container text-on-secondary-container font-bold px-8 py-4 rounded-lg flex items-center justify-center font-label-lg text-label-lg hover:bg-secondary transition-colors focus:outline-none focus:ring-4 focus:ring-primary-container/20 border-2 border-transparent" type="submit">
+                    Simpan &amp; Lanjutkan
+                    <span class="material-symbols-outlined ml-2">arrow_forward</span>
+                </button>
+                <button class="bg-transparent text-primary-container border-2 border-primary-container font-bold px-8 py-4 rounded-lg flex items-center justify-center font-label-lg text-label-lg hover:bg-surface-variant transition-colors focus:outline-none focus:ring-4 focus:ring-primary-container/20" type="button">
+                    Batal
+                </button>
+            </div>
+        </form>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-primary-container dark:bg-tertiary-container mt-auto w-full py-12 px-margin-mobile md:px-margin-desktop border-t border-outline-variant">
+        <div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="font-headline-md text-headline-md text-on-primary-container">
+                © 2024 Badan Kepegawaian Negara. Seluruh Hak Cipta Dilindungi.
+            </div>
+            <ul class="flex flex-wrap justify-center gap-6">
+                <li><a class="font-body-md text-body-md text-on-primary-container dark:text-on-tertiary-container opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity" href="#">Kebijakan Privasi</a></li>
+                <li><a class="font-body-md text-body-md text-on-primary-container dark:text-on-tertiary-container opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity" href="#">Syarat &amp; Ketentuan</a></li>
+                <li><a class="font-body-md text-body-md text-on-primary-container dark:text-on-tertiary-container opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity" href="#">Bantuan (FAQ)</a></li>
+                <li><a class="font-body-md text-body-md text-on-primary-container dark:text-on-tertiary-container opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity" href="#">Kontak Kami</a></li>
+            </ul>
+        </div>
+    </footer>
+</div>
+<!-- Bottom Nav Bar (Mobile) -->
+<nav class="bg-surface dark:bg-surface-container-high border-t border-outline-variant dark:border-outline fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 md:hidden">
+    <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:bg-surface-variant transition-transform hover:scale-90 font-label-sm text-label-sm p-2 rounded" href="#">
+        <span class="material-symbols-outlined mb-1">home</span>
+        Beranda
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:bg-surface-variant transition-transform hover:scale-90 font-label-sm text-label-sm p-2 rounded" href="#">
+        <span class="material-symbols-outlined mb-1">assignment_turned_in</span>
+        Status
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:bg-surface-variant transition-transform hover:scale-90 font-label-sm text-label-sm p-2 rounded" href="#">
+        <span class="material-symbols-outlined mb-1">notifications</span>
+        Notifikasi
+    </a>
+    <a class="flex flex-col items-center justify-center text-primary-container dark:text-secondary-fixed-dim font-bold active:bg-surface-variant transition-transform hover:scale-90 font-label-sm text-label-sm p-2 rounded bg-surface-variant" href="#">
+        <span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+        Profil
+    </a>
+</nav>
+</body></html>
