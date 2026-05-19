@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Edit Task | GovJobs Portal</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .focus-ring:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 33, 71, 0.2);
+            border-color: #002147;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface-variant": "#44474e",
+                      "on-primary-fixed": "#001b3d",
+                      "primary-container": "#002147",
+                      "on-tertiary-container": "#558dc2",
+                      "surface-container-high": "#e8e8e8",
+                      "secondary": "#735c00",
+                      "on-background": "#1a1c1c",
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#f1f1f1",
+                      "tertiary-fixed-dim": "#9acbff",
+                      "tertiary": "#000b19",
+                      "surface-variant": "#e2e2e2",
+                      "inverse-primary": "#aec7f6",
+                      "on-surface": "#1a1c1c",
+                      "on-primary-container": "#708ab5",
+                      "secondary-container": "#fed65b",
+                      "background": "#f9f9f9",
+                      "surface-container-low": "#f3f3f3",
+                      "secondary-fixed-dim": "#e9c349",
+                      "on-tertiary-fixed": "#001d34",
+                      "surface-tint": "#465f88",
+                      "on-secondary-fixed": "#241a00",
+                      "primary-fixed-dim": "#aec7f6",
+                      "on-secondary-container": "#745c00",
+                      "surface-bright": "#f9f9f9",
+                      "outline-variant": "#c4c6cf",
+                      "primary": "#000a1e",
+                      "on-tertiary-fixed-variant": "#004a78",
+                      "on-primary": "#ffffff",
+                      "inverse-surface": "#2f3131",
+                      "surface-container": "#eeeeee",
+                      "tertiary-container": "#00233d",
+                      "outline": "#74777f",
+                      "surface": "#f9f9f9",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed": "#cfe5ff",
+                      "secondary-fixed": "#ffe088",
+                      "surface-dim": "#dadada",
+                      "on-secondary-fixed-variant": "#574500",
+                      "surface-container-highest": "#e2e2e2",
+                      "primary-fixed": "#d6e3ff",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "on-error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "20px",
+                      "gutter-mobile": "16px",
+                      "base": "8px",
+                      "gutter-desktop": "32px",
+                      "margin-desktop": "64px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "label-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "display-lg-mobile": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar Shared Component -->
+<header class="w-full top-0 sticky bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline z-50">
+    <div class="flex justify-between items-center h-16 px-margin-desktop max-w-container-max mx-auto">
+        <div class="flex items-center gap-8">
+            <span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">GovJobs Portal</span>
+            <nav class="hidden md:flex items-center gap-6">
+                <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary text-label-lg font-label-lg transition-colors" href="#">Dashboard</a>
+                <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary text-label-lg font-label-lg transition-colors" href="#">Job Postings</a>
+                <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary text-label-lg font-label-lg transition-colors" href="#">Applications</a>
+                <a class="text-primary dark:text-primary-fixed border-b-2 border-secondary font-bold pb-1 text-label-lg font-label-lg" href="#">Tasks</a>
+                <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary text-label-lg font-label-lg transition-colors" href="#">Reports</a>
+            </nav>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="p-2 hover:bg-surface-container-low transition-colors rounded-full text-on-surface-variant">
+                <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+            </button>
+            <button class="p-2 hover:bg-surface-container-low transition-colors rounded-full text-on-surface-variant">
+                <span class="material-symbols-outlined" data-icon="help">help</span>
+            </button>
+            <div class="w-8 h-8 rounded-full bg-outline-variant overflow-hidden">
+                <img alt="User Profile Avatar" data-alt="A professional headshot of a middle-aged man in a dark business suit, set against a clean, neutral office background. The lighting is soft and flattering, emphasizing a mood of corporate authority and reliability. The overall aesthetic is minimalist, featuring high-contrast tones of deep navy and crisp white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh15lbzxvmdbnQ1l94rGpxFW7Cujp3QGMsu7-ctpV-PiFmKrZg0yXOEUJgrjEgwW4U9Poy8vM04S7KWud7Dw883YE-jo2ylddXXpaR9b0g0hRu6AD_8xgPPR-agVBvgN0HIjg49rOvMGCJ35glhKFoDfT_Xhf9K-dX5vWkuSzpMU33Va66CWTPbhrYGA8gkPcUJtnSzRtGBui7LWDx5ROk7fMDCwKNDriohgvzi01U1hTfSlyh2B11URG7hRphty8asfen59Q4a6Y"/>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="flex max-w-container-max mx-auto min-h-[calc(100vh-64px)]">
+    <!-- SideNavBar Shared Component (Task Focused Context) -->
+    <aside class="hidden lg:flex flex-col py-8 px-4 w-64 bg-surface-container-low border-r border-outline-variant">
+        <div class="px-4 mb-8">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center text-on-primary">
+                    <span class="material-symbols-outlined" data-icon="business">business</span>
+                </div>
+                <div>
+                    <p class="text-label-lg font-label-lg font-bold text-primary">Recruitment Division</p>
+                    <p class="text-label-sm font-label-sm text-on-surface-variant">Task Management</p>
+                </div>
+            </div>
+            <button class="w-full mt-4 bg-secondary-container text-on-secondary-container py-2 rounded-lg font-label-lg hover:opacity-90 transition-all flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined" data-icon="add">add</span>
+                New Request
+            </button>
+        </div>
+        <nav class="flex-1 space-y-1">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-colors" href="#">
+                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                <span class="text-label-lg font-label-lg">Overview</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-transform active:scale-95" href="#">
+                <span class="material-symbols-outlined" data-icon="assignment_ind">assignment_ind</span>
+                <span class="text-label-lg font-label-lg">My Tasks</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-colors" href="#">
+                <span class="material-symbols-outlined" data-icon="group">group</span>
+                <span class="text-label-lg font-label-lg">Team Tasks</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-colors" href="#">
+                <span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+                <span class="text-label-lg font-label-lg">Calendar</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-colors" href="#">
+                <span class="material-symbols-outlined" data-icon="archive">archive</span>
+                <span class="text-label-lg font-label-lg">Archives</span>
+            </a>
+        </nav>
+        <div class="mt-auto border-t border-outline-variant pt-4 space-y-1">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-colors" href="#">
+                <span class="material-symbols-outlined" data-icon="settings">settings</span>
+                <span class="text-label-lg font-label-lg">Settings</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-colors" href="#">
+                <span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+                <span class="text-label-lg font-label-lg">Support</span>
+            </a>
+        </div>
+    </aside>
+    <!-- Main Content Canvas -->
+    <main class="flex-1 p-margin-mobile md:p-margin-desktop overflow-y-auto">
+        <div class="max-w-3xl mx-auto">
+            <!-- Breadcrumbs -->
+            <div class="flex items-center gap-2 mb-8 text-label-sm font-label-sm text-on-surface-variant">
+                <a class="hover:text-primary" href="#">Dashboard</a>
+                <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                <a class="hover:text-primary" href="#">Tasks</a>
+                <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                <span class="text-primary font-bold">Edit Task</span>
+            </div>
+            <!-- Edit Task Card -->
+            <div class="bg-white border border-outline-variant rounded-xl overflow-hidden">
+                <!-- Card Header -->
+                <div class="bg-primary-container px-8 py-6">
+                    <h1 class="text-headline-md font-headline-md text-on-primary">Edit Recruitment Task</h1>
+                    <p class="text-on-primary-container text-label-lg font-label-lg mt-1 opacity-90">ID: TASK-2024-0892</p>
+                </div>
+                <!-- Card Body / Form -->
+                <div class="p-8 space-y-8">
+                    <!-- Task Title -->
+                    <div class="space-y-2">
+                        <label class="text-label-lg font-label-lg text-primary block" for="task-title">Task Title</label>
+                        <input class="w-full px-4 py-3 border border-outline-variant rounded focus-ring text-on-surface font-body-md transition-all" id="task-title" placeholder="Enter task title" type="text" value="Review Senior Developer Applications - Dept. of Cybersecurity"/>
+                    </div>
+                    <!-- Priority Selection -->
+                    <div class="space-y-3">
+                        <label class="text-label-lg font-label-lg text-primary block">Priority Level</label>
+                        <div class="flex flex-wrap gap-4">
+                            <label class="relative flex items-center cursor-pointer group">
+                                <input class="sr-only peer" name="priority" type="radio" value="low"/>
+                                <div class="px-6 py-2 border border-outline-variant rounded-full text-label-lg font-label-lg peer-checked:bg-surface-variant peer-checked:border-primary-container transition-all hover:bg-surface-container">
+                                    Low
+                                </div>
+                            </label>
+                            <label class="relative flex items-center cursor-pointer group">
+                                <input class="sr-only peer" name="priority" type="radio" value="medium"/>
+                                <div class="px-6 py-2 border border-outline-variant rounded-full text-label-lg font-label-lg peer-checked:bg-surface-variant peer-checked:border-primary-container transition-all hover:bg-surface-container">
+                                    Medium
+                                </div>
+                            </label>
+                            <label class="relative flex items-center cursor-pointer group">
+                                <input checked="" class="sr-only peer" name="priority" type="radio" value="high"/>
+                                <div class="px-6 py-2 border-2 border-secondary bg-secondary-container text-on-secondary-container rounded-full text-label-lg font-label-lg peer-checked:ring-2 peer-checked:ring-offset-1 peer-checked:ring-secondary transition-all">
+                                    High
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Rich Text Description -->
+                    <div class="space-y-2">
+                        <label class="text-label-lg font-label-lg text-primary block">Description</label>
+                        <div class="border border-outline-variant rounded overflow-hidden">
+                            <div class="bg-surface-container-low border-b border-outline-variant px-4 py-2 flex items-center gap-4">
+                                <button class="p-1 hover:bg-surface-variant rounded text-on-surface-variant"><span class="material-symbols-outlined" data-icon="format_bold">format_bold</span></button>
+                                <button class="p-1 hover:bg-surface-variant rounded text-on-surface-variant"><span class="material-symbols-outlined" data-icon="format_italic">format_italic</span></button>
+                                <button class="p-1 hover:bg-surface-variant rounded text-on-surface-variant"><span class="material-symbols-outlined" data-icon="format_list_bulleted">format_list_bulleted</span></button>
+                                <div class="w-[1px] h-4 bg-outline-variant"></div>
+                                <button class="p-1 hover:bg-surface-variant rounded text-on-surface-variant"><span class="material-symbols-outlined" data-icon="link">link</span></button>
+                                <button class="p-1 hover:bg-surface-variant rounded text-on-surface-variant"><span class="material-symbols-outlined" data-icon="image">image</span></button>
+                            </div>
+                            <textarea class="w-full p-4 border-none focus:ring-0 text-on-surface font-body-md" id="description" placeholder="Provide detailed task instructions..." rows="6">Please conduct a preliminary technical review of the top 15 candidates for the Cybersecurity Lead position. Focus on federal compliance experience and large-scale infrastructure management.
+
+Deliverables:
+- Ranked spreadsheet of candidates
+- Summary of technical interview gaps
+- Final recommendation for Phase 2</textarea>
+                        </div>
+                    </div>
+                    <!-- Metadata Info -->
+                    <div class="bg-surface-container-low p-4 rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-outline" data-icon="person">person</span>
+                            <div class="text-label-sm font-label-sm">
+                                <p class="text-on-surface-variant">Assigned to</p>
+                                <p class="text-primary font-bold">James Wilson (Lead Recruiter)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-outline" data-icon="event">event</span>
+                            <div class="text-label-sm font-label-sm">
+                                <p class="text-on-surface-variant">Due Date</p>
+                                <p class="text-primary font-bold">Oct 24, 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Footer Actions -->
+                <div class="px-8 py-6 border-t border-outline-variant flex flex-col sm:flex-row-reverse items-center gap-4">
+                    <button class="w-full sm:w-auto bg-[#D4AF37] text-[#002147] px-8 py-3 rounded-lg font-bold hover:opacity-90 transition-all focus:ring-3 focus:ring-offset-2 focus:ring-[#002147]" type="submit">
+                        Save Changes
+                    </button>
+                    <button class="w-full sm:w-auto border-2 border-[#002147] text-[#002147] px-8 py-[10px] rounded-lg font-bold hover:bg-surface-container-low transition-all" type="button">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+            <!-- Bottom Warning -->
+            <p class="mt-6 text-center text-label-sm font-label-sm text-on-surface-variant">
+                <span class="material-symbols-outlined text-[14px] mr-1" data-icon="info">info</span>
+                Changes to this task will be logged in the recruitment audit trail.
+            </p>
+        </div>
+    </main>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+    document.querySelectorAll('button, a').forEach(elem => {
+        elem.addEventListener('mousedown', () => {
+            elem.style.transform = 'scale(0.98)';
+        });
+        elem.addEventListener('mouseup', () => {
+            elem.style.transform = 'scale(1)';
+        });
+        elem.addEventListener('mouseleave', () => {
+            elem.style.transform = 'scale(1)';
+        });
+    });
+
+    // Simple feedback for Save Changes button
+    const saveBtn = document.querySelector('button[type="submit"]');
+    saveBtn.addEventListener('click', () => {
+        saveBtn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="autorenew">autorenew</span> Processing...';
+        setTimeout(() => {
+            saveBtn.innerHTML = '<span class="material-symbols-outlined" data-icon="check">check</span> Changes Saved';
+            saveBtn.classList.add('bg-green-600', 'text-white');
+            saveBtn.style.backgroundColor = '#166534';
+            saveBtn.style.color = '#ffffff';
+            setTimeout(() => {
+               saveBtn.innerHTML = 'Save Changes';
+               saveBtn.style.backgroundColor = '#D4AF37';
+               saveBtn.style.color = '#002147';
+            }, 2000);
+        }, 800);
+    });
+</script>
+</body></html>
