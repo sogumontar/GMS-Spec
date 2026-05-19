@@ -1,50 +1,22 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Frontend Project Constitution (Project DNA)
 
-## Core Principles
+## 1. Tech Stack
+- This project uses **Next.js (App Router)**.
+- The primary programming languages used are **TypeScript** and **React**.
+- All pages must be located within the `GMS-FE/app/` directory.
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+## 2. UI Conversion Rules (Stich.ai to React)
+- DO NOT place long, raw HTML code into a single file. All UI MUST be broken down into small, modular, and reusable React components inside the `/components` folder (parallel to the `app` folder).
+- When converting static HTML references into React JSX, strictly adhere to the following rules:
+    - MUST change all `class` attributes to `className`.
+    - MUST properly close self-closing tags to be valid in JSX (e.g., `<input>` becomes `<input />`, `<hr>` becomes `<hr />`).
+    - MUST change the `for` attribute on labels to `htmlFor`.
+    - HTML attributes using *kebab-case* (such as `stroke-width`) must be converted to *camelCase* (such as `strokeWidth`) within SVGs or other elements.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+## 3. Asset Management
+- DO NOT use the standard HTML `<img>` tag. All images MUST use the built-in `<Image />` component from `next/image`.
+- All static assets (images, icons, etc.) from the reference files must be placed inside the `/public` folder.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
-
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
-
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
-
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
-
-## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
-
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+## 4. AI Behavior (Guardrails)
+- Do not create connections to a real Backend API or database unless explicitly instructed to do so within the specification file (`.specify`).
+- If in doubt regarding styling or layout, always use the Stich.ai HTML/CSS files in the reference folder as the absolute Source of Truth.

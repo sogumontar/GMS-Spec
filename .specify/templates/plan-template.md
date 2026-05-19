@@ -31,7 +31,11 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- [ ] **I. Spec-Driven**: Does this plan stem from an approved specification?
+- [ ] **II. Testable**: Are all design decisions verifiable through tests?
+- [ ] **III. Traceable**: Does every phase map back to specification requirements?
+- [ ] **IV. History**: Will this implementation leave a clear, immutable audit trail?
+- [ ] **V. YAGNI**: Have all "just-in-case" or out-of-scope features been removed?
 
 ## Project Structure
 

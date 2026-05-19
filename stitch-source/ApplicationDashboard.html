@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Portal Pengadaan PPPK - Dashboard Pelamar</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "primary-container": "#002147",
+                    "secondary": "#735c00",
+                    "on-secondary-container": "#745c00",
+                    "on-secondary-fixed": "#241a00",
+                    "on-background": "#1a1c1c",
+                    "on-tertiary-fixed": "#001d34",
+                    "inverse-primary": "#aec7f6",
+                    "on-primary-fixed": "#001b3d",
+                    "outline-variant": "#c4c6cf",
+                    "tertiary": "#000b19",
+                    "inverse-surface": "#2f3131",
+                    "surface-tint": "#465f88",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#558dc2",
+                    "primary-fixed": "#d6e3ff",
+                    "on-primary-container": "#708ab5",
+                    "primary": "#000a1e",
+                    "primary-fixed-dim": "#aec7f6",
+                    "background": "#f9f9f9",
+                    "surface-container": "#eeeeee",
+                    "tertiary-container": "#00233d",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#004a78",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-surface": "#1a1c1c",
+                    "secondary-fixed-dim": "#e9c349",
+                    "tertiary-fixed-dim": "#9acbff",
+                    "surface-bright": "#f9f9f9",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "surface-variant": "#e2e2e2",
+                    "secondary-fixed": "#ffe088",
+                    "surface-container-highest": "#e2e2e2",
+                    "surface-container-low": "#f3f3f3",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#fed65b",
+                    "outline": "#74777f",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dadada",
+                    "on-secondary-fixed-variant": "#574500",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#cfe5ff",
+                    "surface-container-high": "#e8e8e8",
+                    "surface": "#f9f9f9",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#44474e",
+                    "surface-container-lowest": "#ffffff"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "spacing": {
+                    "gutter-desktop": "32px",
+                    "base": "8px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "20px",
+                    "gutter-mobile": "16px",
+                    "container-max": "1280px"
+                },
+                "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-lg": ["Inter"]
+                },
+                "fontSize": {
+                    "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                    "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                    "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                    "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                    "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                    "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+                }
+            }
+        }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+  <style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row">
+<!-- TopAppBar (Mobile Only - Web uses Sidebar) -->
+<header class="bg-surface text-primary-container border-b border-outline-variant w-full fixed top-0 z-50 md:hidden flex justify-between items-center px-margin-mobile py-4 shadow-sm">
+  <div class="flex items-center gap-2">
+    <span class="material-symbols-outlined text-[24px]">account_balance</span>
+    <span class="font-headline-md text-headline-md font-bold">Portal Pengadaan PPPK</span>
+  </div>
+  <span class="material-symbols-outlined text-[24px]">account_circle</span>
+</header>
+<!-- NavigationDrawer (Web Only) -->
+<aside class="bg-surface-container-low text-primary-container font-label-lg text-label-lg h-full w-72 border-r border-outline-variant fixed left-0 top-0 z-40 hidden md:flex flex-col">
+  <!-- Header -->
+  <div class="p-6 border-b border-outline-variant flex flex-col items-start gap-4">
+    <div class="flex items-center gap-3 w-full">
+      <img alt="User Profile Picture" class="w-12 h-12 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of a mature Southeast Asian man in a formal setting. The lighting is studio-quality, casting soft shadows that highlight his features. He wears a dark navy suit and a white shirt. The background is a solid, muted gray to maintain focus on the subject." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2dDIbkzOHC1XIKKXVnN2KWO6E-PBZI7x35xfcs20Tl8NtrZn0zIwWb3P9k6SO22iCH5XJZyjqQutkshAZy3trkAi9kYv-wOOeLDwrQh0Ip_9goovL_B4CO33P61Agtu9AxPV7IB8uuCyP3uleQftIQhfO4o5VmMNk83oNMzXbLFdau0tHbGexb42p0v4yqQDLHvvkuGwwHASr7GPU-UuqyoiEnAUmlLLxtY3p6dj_kcNSvQqzu79_Gka4UQ6wZV2U_pWBRmY36g0"/>
+      <div>
+        <h2 class="font-headline-md text-headline-md text-primary-container font-bold text-lg leading-tight">Ahmad Sudrajat</h2>
+        <p class="text-on-surface-variant font-label-sm text-label-sm">Pelamar Umum</p>
+      </div>
+    </div>
+    <p class="text-on-surface-variant font-label-sm text-label-sm">NIP: 198502...</p>
+  </div>
+  <!-- Navigation Links -->
+  <nav class="flex-1 py-4 flex flex-col gap-1 overflow-y-auto">
+    <a class="bg-secondary-container text-on-secondary-container font-bold rounded-lg px-4 py-3 mx-2 my-1 flex items-center gap-4 transition-all scale-95 opacity-90" href="#">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+      Dashboard
+    </a>
+    <a class="text-on-surface-variant px-4 py-3 mx-2 my-1 flex items-center gap-4 hover:bg-surface-variant rounded-lg transition-all" href="#">
+      <span class="material-symbols-outlined">person</span>
+      Biodata
+    </a>
+    <a class="text-on-surface-variant px-4 py-3 mx-2 my-1 flex items-center gap-4 hover:bg-surface-variant rounded-lg transition-all" href="#">
+      <span class="material-symbols-outlined">edit_note</span>
+      Pendaftaran
+    </a>
+    <a class="text-on-surface-variant px-4 py-3 mx-2 my-1 flex items-center gap-4 hover:bg-surface-variant rounded-lg transition-all" href="#">
+      <span class="material-symbols-outlined">cloud_upload</span>
+      Dokumen
+    </a>
+    <a class="text-on-surface-variant px-4 py-3 mx-2 my-1 flex items-center gap-4 hover:bg-surface-variant rounded-lg transition-all" href="#">
+      <span class="material-symbols-outlined">description</span>
+      Resume
+    </a>
+  </nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 w-full md:ml-72 pt-[72px] md:pt-0 pb-[72px] md:pb-0 min-h-screen bg-background">
+  <div class="px-margin-mobile md:px-margin-desktop py-8 md:py-12 max-w-container-max mx-auto space-y-8">
+    <!-- Page Header -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+      <div>
+        <h1 class="font-headline-lg text-headline-lg text-primary-container font-bold mb-2">Halo, Ahmad!</h1>
+        <p class="font-body-md text-body-md text-on-surface-variant">Pantau status pendaftaran PPPK Anda di sini.</p>
+      </div>
+      <button class="bg-secondary text-primary-container font-label-lg text-label-lg font-bold py-3 px-6 rounded-lg flex items-center gap-2 hover:bg-secondary-container transition-colors focus:ring-3 focus:ring-primary-container focus:outline-none">
+        <span class="material-symbols-outlined">download</span>
+        Kartu Informasi Akun
+      </button>
+    </div>
+    <!-- Bento Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+      <!-- Main Status Card (Spans 8 cols) -->
+      <div class="md:col-span-8 bg-surface rounded-xl border border-outline-variant p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-6">
+            <h2 class="font-headline-md text-headline-md text-primary-container font-semibold">Status Pendaftaran</h2>
+            <span class="bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">pending_actions</span>
+                                Menunggu Verifikasi Administrasi
+                            </span>
+          </div>
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+                <span class="material-symbols-outlined">work</span>
+              </div>
+              <div>
+                <p class="font-label-sm text-label-sm text-on-surface-variant">Formasi Pilihan</p>
+                <p class="font-body-md text-body-md font-medium">Ahli Pertama - Pranata Komputer</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+                <span class="material-symbols-outlined">account_balance</span>
+              </div>
+              <div>
+                <p class="font-label-sm text-label-sm text-on-surface-variant">Instansi</p>
+                <p class="font-body-md text-body-md font-medium">Kementerian Komunikasi dan Informatika</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant flex items-start gap-3">
+          <span class="material-symbols-outlined text-secondary mt-0.5">info</span>
+          <div>
+            <p class="font-label-lg text-label-lg text-on-surface mb-1">Pemberitahuan</p>
+            <p class="font-body-md text-body-md text-on-surface-variant">Berkas Anda sedang dalam proses verifikasi oleh instansi. Silakan pantau secara berkala. Verifikasi diperkirakan selesai pada tanggal 25 Oktober 2024.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Quick Actions / Progress (Spans 4 cols) -->
+      <div class="md:col-span-4 flex flex-col gap-6">
+        <!-- Progress Card -->
+        <div class="bg-surface rounded-xl border border-outline-variant p-6">
+          <h3 class="font-headline-md text-headline-md text-primary-container font-semibold mb-4 text-lg">Tahapan Seleksi</h3>
+          <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-outline-variant before:-z-10 pl-10 md:pl-0">
+            <!-- Step 1 Done -->
+            <div class="relative flex items-center md:justify-center md:items-start gap-4 group">
+              <div class="absolute left-0 -ml-10 md:static md:ml-0 w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center ring-4 ring-surface">
+                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
+              </div>
+              <div class="md:w-full md:text-center mt-1">
+                <h4 class="font-label-lg text-label-lg text-on-surface">Pendaftaran Akun</h4>
+                <p class="font-label-sm text-label-sm text-on-surface-variant">Selesai</p>
+              </div>
+            </div>
+            <!-- Step 2 Current -->
+            <div class="relative flex items-center md:justify-center md:items-start gap-4 group">
+              <div class="absolute left-0 -ml-10 md:static md:ml-0 w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center ring-4 ring-surface">
+                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">hourglass_empty</span>
+              </div>
+              <div class="md:w-full md:text-center mt-1">
+                <h4 class="font-label-lg text-label-lg text-on-surface">Seleksi Administrasi</h4>
+                <p class="font-label-sm text-label-sm text-secondary">Sedang Proses</p>
+              </div>
+            </div>
+            <!-- Step 3 Future -->
+            <div class="relative flex items-center md:justify-center md:items-start gap-4 group">
+              <div class="absolute left-0 -ml-10 md:static md:ml-0 w-10 h-10 rounded-full bg-surface-container text-outline flex items-center justify-center ring-4 ring-surface">
+                <span class="material-symbols-outlined text-[20px]">description</span>
+              </div>
+              <div class="md:w-full md:text-center mt-1">
+                <h4 class="font-label-lg text-label-lg text-outline">Cetak Kartu Ujian</h4>
+                <p class="font-label-sm text-label-sm text-outline-variant">Belum Mulai</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Important Dates Card -->
+        <div class="bg-surface rounded-xl border border-outline-variant p-6">
+          <h3 class="font-headline-md text-headline-md text-primary-container font-semibold mb-4 text-lg">Jadwal Penting</h3>
+          <ul class="space-y-3">
+            <li class="flex justify-between items-center py-2 border-b border-outline-variant/50 last:border-0">
+              <span class="font-body-md text-body-md text-on-surface">Pengumuman Admin</span>
+              <span class="font-label-lg text-label-lg text-primary-container bg-surface-container px-2 py-1 rounded">25 Okt 2024</span>
+            </li>
+            <li class="flex justify-between items-center py-2 border-b border-outline-variant/50 last:border-0">
+              <span class="font-body-md text-body-md text-on-surface">Masa Sanggah</span>
+              <span class="font-label-lg text-label-lg text-primary-container bg-surface-container px-2 py-1 rounded">26 - 28 Okt 2024</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="bg-surface border-t border-outline-variant fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 md:hidden shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+  <a class="flex flex-col items-center justify-center text-primary-container font-bold active:bg-surface-variant transition-transform transform active:scale-90 duration-100 p-2 rounded-lg" href="#">
+    <span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">home</span>
+    <span class="font-label-sm text-label-sm">Beranda</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-variant transition-transform transform active:scale-90 duration-100 p-2 rounded-lg" href="#">
+    <span class="material-symbols-outlined mb-1">assignment_turned_in</span>
+    <span class="font-label-sm text-label-sm">Status</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-variant transition-transform transform active:scale-90 duration-100 p-2 rounded-lg" href="#">
+    <span class="material-symbols-outlined mb-1">notifications</span>
+    <span class="font-label-sm text-label-sm">Notifikasi</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-variant transition-transform transform active:scale-90 duration-100 p-2 rounded-lg" href="#">
+    <span class="material-symbols-outlined mb-1">account_circle</span>
+    <span class="font-label-sm text-label-sm">Profil</span>
+  </a>
+</nav>
+</body></html>

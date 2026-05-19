@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Operations Center</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface": "#f8f9ff",
+                    "on-secondary-container": "#49637d",
+                    "on-primary-container": "#8ebdf9",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#d3e4fe",
+                    "on-background": "#0b1c30",
+                    "surface-bright": "#f8f9ff",
+                    "on-primary-fixed": "#001c37",
+                    "on-error": "#ffffff",
+                    "secondary": "#47617a",
+                    "surface-dim": "#cbdbf5",
+                    "tertiary-container": "#464b4e",
+                    "surface-container": "#e5eeff",
+                    "surface-container-high": "#dce9ff",
+                    "tertiary-fixed-dim": "#c3c7cb",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-secondary-fixed": "#001d33",
+                    "inverse-primary": "#a0c9ff",
+                    "primary-fixed-dim": "#a0c9ff",
+                    "outline": "#727780",
+                    "primary-container": "#0f4c81",
+                    "primary": "#00355f",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#171c1f",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#c5e0fe",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c2c7d1",
+                    "secondary-fixed": "#cee5ff",
+                    "primary-fixed": "#d2e4ff",
+                    "on-tertiary-fixed-variant": "#43474b",
+                    "on-secondary-fixed-variant": "#2f4961",
+                    "surface-tint": "#2d6197",
+                    "inverse-surface": "#213145",
+                    "on-surface-variant": "#42474f",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#aec9e7",
+                    "surface-container-low": "#eff4ff",
+                    "on-surface": "#0b1c30",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#303438",
+                    "on-tertiary-container": "#b6bbbf",
+                    "on-primary-fixed-variant": "#07497d",
+                    "tertiary-fixed": "#dfe3e7",
+                    "on-tertiary": "#ffffff",
+                    "background": "#f8f9ff"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "spacing": {
+                    "sm": "0.5rem",
+                    "gutter": "1.5rem",
+                    "margin": "2rem",
+                    "xl": "2rem",
+                    "base": "4px",
+                    "md": "1rem",
+                    "lg": "1.5rem",
+                    "xs": "0.25rem",
+                    "sidebar-width": "260px"
+                },
+                "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "mono": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "h1": ["Manrope"],
+                    "h2": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "h3": ["Manrope"]
+                },
+                "fontSize": {
+                    "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                    "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                    "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                    "mono": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                    "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                    "h1": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                    "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                    "h3": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                }
+            }
+        }
+    }
+  </script>
+  <style>
+    body { background-color: #F8FAFC; } /* Matches tertiary blue-grey canvas Level 0 */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid #E2E8F0;
+    }
+  </style>
+  <style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md flex h-screen overflow-hidden">
+<!-- NavigationDrawer -->
+<nav class="fixed left-0 top-0 w-[260px] h-screen border-r rounded-none border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-blue-900 dark:text-blue-400 font-manrope text-sm font-medium shadow-none flex flex-col h-full z-20">
+  <div class="p-6 border-b border-slate-200 dark:border-slate-800">
+    <div class="flex items-center gap-3">
+      <img alt="Admin User Profile" class="w-10 h-10 rounded-full object-cover bg-surface-container" data-alt="A professional headshot of an administrative user, brightly lit against a neutral background, suitable for a sleek corporate dashboard avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuwcLcP54QzPl8meMJNIwWESS9wnvrxYdW2MFRGDPecogxaqCkIdZDSDCOo8vbTww4dl_8U3oZM09yriZ6wrQ8pS2Zkjhbvc6e2JIBS12kMynTEMji29cxv_BWSNd0r6VgRko94cyB2xl1Hewl1bRF4HjQIrHhBxixf8HrSuTjvxOt-tz9aKDabwn0QyMLZCIlnNGuNpRvPQvi_HUQY3irEvzk8MtDgz7NKJQI5KLp8wc9w89IO_R8Fk_gSGACppcZqV5GbkElAuE"/>
+      <div class="flex flex-col">
+        <span class="text-xl font-bold text-slate-900 dark:text-white leading-tight">Admin Console</span>
+        <span class="text-xs text-slate-500">Operations Manager</span>
+      </div>
+    </div>
+  </div>
+  <div class="flex-1 py-4 flex flex-col gap-1 overflow-y-auto">
+    <a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer active:opacity-80 flex items-center gap-3" href="#">
+      <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+      <span>Dashboard</span>
+    </a>
+    <a class="border-l-[3px] border-blue-900 dark:border-blue-400 bg-slate-50 dark:bg-slate-800/50 text-blue-900 dark:text-blue-400 font-bold px-4 py-3 cursor-pointer active:opacity-80 flex items-center gap-3" href="#">
+      <span class="material-symbols-outlined" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+      <span>Operations</span>
+    </a>
+    <a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer active:opacity-80 flex items-center gap-3" href="#">
+      <span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+      <span>Inventory</span>
+    </a>
+    <a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer active:opacity-80 flex items-center gap-3" href="#">
+      <span class="material-symbols-outlined" data-icon="group">group</span>
+      <span>User Management</span>
+    </a>
+    <a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer active:opacity-80 flex items-center gap-3" href="#">
+      <span class="material-symbols-outlined" data-icon="settings">settings</span>
+      <span>System Settings</span>
+    </a>
+  </div>
+  <div class="p-4 border-t border-slate-200 dark:border-slate-800 mt-auto">
+    <span class="text-xs text-slate-400 font-mono">v2.4.0</span>
+  </div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 ml-[260px] flex flex-col h-screen overflow-hidden">
+  <!-- TopAppBar -->
+  <header class="sticky top-0 w-full border-b border-slate-200 dark:border-slate-800 shadow-none bg-white/80 dark:bg-slate-900/80 backdrop-blur-md text-blue-900 dark:text-blue-400 font-manrope text-base tracking-tight flex justify-between items-center h-16 px-6 z-10">
+    <div class="flex items-center gap-4">
+      <button class="text-slate-500 dark:text-slate-400 hover:text-blue-700 dark:hover:text-blue-300 transition-all duration-200">
+        <span class="material-symbols-outlined" data-icon="menu_open">menu_open</span>
+      </button>
+      <h1 class="text-lg font-extrabold text-blue-900 dark:text-blue-400">Operations Center</h1>
+    </div>
+    <div class="flex items-center gap-4">
+      <button class="relative text-slate-500 dark:text-slate-400 hover:text-blue-700 dark:hover:text-blue-300 transition-all duration-200">
+        <span class="material-symbols-outlined">notifications</span>
+        <span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+      </button>
+      <img alt="User Avatar" class="w-8 h-8 rounded-full border border-slate-200 object-cover" data-alt="A small circular user avatar showing a professional minimalist icon on a white background, fitting a sleek corporate interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsPxRczOKodR3cvBDAMaBRHY2tP-6S9e-tgwSeRSju5-T-GCLoo9Bh3ogmhPs7WW4LA0xAkJPsOR7VWVdXFniL41h_x3nHB--j19ojQxS2SNNlbiHcK5oIT84YpJ2GXG-eyAsJ1_TpdIQSAao5-yr_1mG1vwgovtBTK9E0pJuaslCBdv9GZbA7f2XENLtV-NoFgK_r39nn4T3PYaTCIAC6rwmiIP6yqobfIpOGcvjaifTWod-pqccBEfGbxjZjMu0y7Ywqyo7Vy5g"/>
+    </div>
+  </header>
+  <!-- Main Canvas -->
+  <main class="flex-1 overflow-y-auto p-xl">
+    <div class="max-w-[1440px] mx-auto flex flex-col gap-xl">
+      <!-- Top Row: Status Overview Bento Grid -->
+      <section class="grid grid-cols-12 gap-md">
+        <!-- Global Status -->
+        <div class="col-span-12 md:col-span-4 glass-card rounded-xl p-lg flex flex-col justify-between">
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h2 class="font-h3 text-h3 text-on-background mb-1">System Status</h2>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">Real-time health overview</p>
+            </div>
+            <span class="px-3 py-1 bg-surface-container-low text-primary rounded-full font-label-sm text-label-sm flex items-center gap-1 border border-primary-fixed">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                Optimal
+                            </span>
+          </div>
+          <div class="flex items-end gap-3">
+            <span class="font-h1 text-[48px] leading-none text-primary font-bold">99.9%</span>
+            <span class="font-body-md text-body-md text-on-surface-variant pb-1">Uptime</span>
+          </div>
+        </div>
+        <!-- Metric Cards -->
+        <div class="col-span-12 md:col-span-8 grid grid-cols-3 gap-md">
+          <div class="glass-card rounded-xl p-md flex flex-col justify-center">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-symbols-outlined text-secondary text-[20px]">router</span>
+              <span class="font-label-md text-label-md text-secondary">Network Load</span>
+            </div>
+            <div class="flex items-end justify-between">
+              <span class="font-h2 text-h2 text-on-background">42%</span>
+              <span class="text-emerald-600 font-label-sm text-label-sm flex items-center">
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span> 2.4%
+                                </span>
+            </div>
+            <div class="w-full bg-surface-container-high h-1 mt-3 rounded-full overflow-hidden">
+              <div class="bg-primary h-full w-[42%]"></div>
+            </div>
+          </div>
+          <div class="glass-card rounded-xl p-md flex flex-col justify-center">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-symbols-outlined text-secondary text-[20px]">memory</span>
+              <span class="font-label-md text-label-md text-secondary">CPU Usage</span>
+            </div>
+            <div class="flex items-end justify-between">
+              <span class="font-h2 text-h2 text-on-background">78%</span>
+              <span class="text-[#eab308] font-label-sm text-label-sm flex items-center">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span> 12%
+                                </span>
+            </div>
+            <div class="w-full bg-surface-container-high h-1 mt-3 rounded-full overflow-hidden">
+              <div class="bg-[#eab308] h-full w-[78%]"></div>
+            </div>
+          </div>
+          <div class="glass-card rounded-xl p-md flex flex-col justify-center border-l-4 border-l-error">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-symbols-outlined text-secondary text-[20px]">storage</span>
+              <span class="font-label-md text-label-md text-secondary">Active Nodes</span>
+            </div>
+            <div class="flex items-end justify-between">
+              <span class="font-h2 text-h2 text-on-background">1,204</span>
+              <span class="text-error font-label-sm text-label-sm flex items-center">
+<span class="material-symbols-outlined text-[16px]">warning</span> 3 offline
+                                </span>
+            </div>
+            <div class="w-full bg-surface-container-high h-1 mt-3 rounded-full overflow-hidden">
+              <div class="bg-error h-full w-[98%]"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Middle Row: Split View -->
+      <div class="grid grid-cols-12 gap-md h-[400px]">
+        <!-- Server Logs -->
+        <section class="col-span-12 md:col-span-8 glass-card rounded-xl flex flex-col overflow-hidden">
+          <div class="p-lg border-b border-slate-200 flex justify-between items-center bg-white">
+            <h3 class="font-h3 text-h3 text-on-background">Active Server Logs</h3>
+            <div class="flex gap-2">
+              <button class="px-3 py-1.5 text-secondary hover:bg-surface-container rounded-lg font-label-sm text-label-sm flex items-center gap-1 transition-colors">
+                <span class="material-symbols-outlined text-[18px]">filter_list</span> Filter
+              </button>
+              <button class="px-3 py-1.5 text-secondary hover:bg-surface-container rounded-lg font-label-sm text-label-sm flex items-center gap-1 transition-colors">
+                <span class="material-symbols-outlined text-[18px]">download</span> Export
+              </button>
+            </div>
+          </div>
+          <div class="flex-1 overflow-y-auto p-4 bg-[#0F172A] font-mono text-mono text-slate-300">
+            <div class="flex flex-col gap-2">
+              <div class="flex gap-4 items-start hover:bg-white/5 p-1 rounded">
+                <span class="text-slate-500 w-24 shrink-0">14:02:11</span>
+                <span class="text-emerald-400 w-16 shrink-0">[INFO]</span>
+                <span class="break-all">Node cluster Alpha-7 successfully synchronized. Sync time: 42ms.</span>
+              </div>
+              <div class="flex gap-4 items-start hover:bg-white/5 p-1 rounded bg-white/5">
+                <span class="text-slate-500 w-24 shrink-0">14:02:08</span>
+                <span class="text-[#eab308] w-16 shrink-0">[WARN]</span>
+                <span class="break-all">High latency detected on gateway EU-West. Attempting re-route.</span>
+              </div>
+              <div class="flex gap-4 items-start hover:bg-white/5 p-1 rounded">
+                <span class="text-slate-500 w-24 shrink-0">14:01:55</span>
+                <span class="text-emerald-400 w-16 shrink-0">[INFO]</span>
+                <span class="break-all">User session cleanup initiated. Removed 142 stale sessions.</span>
+              </div>
+              <div class="flex gap-4 items-start hover:bg-white/5 p-1 rounded border-l-2 border-error bg-error/10">
+                <span class="text-slate-500 w-24 shrink-0">14:01:23</span>
+                <span class="text-error w-16 shrink-0">[ERR]</span>
+                <span class="break-all">Database connection timeout on replica DB-Read-03. Retrying connection (1/3).</span>
+              </div>
+              <div class="flex gap-4 items-start hover:bg-white/5 p-1 rounded">
+                <span class="text-slate-500 w-24 shrink-0">14:00:10</span>
+                <span class="text-emerald-400 w-16 shrink-0">[INFO]</span>
+                <span class="break-all">Scheduled backup completed. Size: 4.2TB. Checksum verified.</span>
+              </div>
+              <div class="flex gap-4 items-start hover:bg-white/5 p-1 rounded">
+                <span class="text-slate-500 w-24 shrink-0">13:59:45</span>
+                <span class="text-emerald-400 w-16 shrink-0">[INFO]</span>
+                <span class="break-all">Incoming API request volume normalized.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Quick Actions / Emergency -->
+        <section class="col-span-12 md:col-span-4 glass-card rounded-xl p-lg flex flex-col bg-white">
+          <h3 class="font-h3 text-h3 text-on-background mb-6">Action Center</h3>
+          <div class="flex flex-col gap-3 flex-1">
+            <button class="w-full bg-white border border-outline-variant hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-primary font-label-md text-label-md py-3 px-4 rounded-lg flex items-center justify-between transition-all group">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">restart_alt</span>
+                Restart Service Gateway
+              </div>
+              <span class="material-symbols-outlined text-[18px] opacity-50">chevron_right</span>
+            </button>
+            <button class="w-full bg-white border border-outline-variant hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-primary font-label-md text-label-md py-3 px-4 rounded-lg flex items-center justify-between transition-all group">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">sync</span>
+                Force Data Sync
+              </div>
+              <span class="material-symbols-outlined text-[18px] opacity-50">chevron_right</span>
+            </button>
+            <div class="mt-auto pt-6 border-t border-slate-200">
+              <h4 class="font-label-sm text-label-sm text-secondary mb-3 uppercase tracking-wider">Emergency Procedures</h4>
+              <button class="w-full bg-error/10 border border-error/20 hover:bg-error/20 text-error font-label-md text-label-md py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-all">
+                <span class="material-symbols-outlined">power_settings_new</span>
+                Initiate Failsafe Shutdown
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>
