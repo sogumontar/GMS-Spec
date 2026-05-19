@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>My Tasks - GovJobs Portal</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .task-card:hover {
+            border-color: #002147;
+            transition: border-color 0.2s ease-in-out;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 10px;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#c4c6cf",
+                      "on-surface": "#1a1c1c",
+                      "inverse-on-surface": "#f1f1f1",
+                      "primary-fixed": "#d6e3ff",
+                      "error": "#ba1a1a",
+                      "surface-variant": "#e2e2e2",
+                      "surface-container-low": "#f3f3f3",
+                      "primary-container": "#002147",
+                      "surface": "#f9f9f9",
+                      "secondary-fixed": "#ffe088",
+                      "on-primary-container": "#708ab5",
+                      "inverse-surface": "#2f3131",
+                      "secondary": "#735c00",
+                      "on-error": "#ffffff",
+                      "on-background": "#1a1c1c",
+                      "primary-fixed-dim": "#aec7f6",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#001b3d",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#000b19",
+                      "primary": "#000a1e",
+                      "surface-bright": "#f9f9f9",
+                      "surface-dim": "#dadada",
+                      "on-secondary-container": "#745c00",
+                      "inverse-primary": "#aec7f6",
+                      "outline": "#74777f",
+                      "on-tertiary-fixed": "#001d34",
+                      "on-secondary-fixed-variant": "#574500",
+                      "surface-container-high": "#e8e8e8",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed-dim": "#9acbff",
+                      "on-tertiary-fixed-variant": "#004a78",
+                      "background": "#f9f9f9",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "on-surface-variant": "#44474e",
+                      "on-tertiary-container": "#558dc2",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#fed65b",
+                      "tertiary-container": "#00233d",
+                      "surface-container": "#eeeeee",
+                      "on-secondary-fixed": "#241a00",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed-dim": "#e9c349",
+                      "surface-container-highest": "#e2e2e2",
+                      "tertiary-fixed": "#cfe5ff",
+                      "surface-tint": "#465f88"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "base": "8px",
+                      "margin-desktop": "64px",
+                      "gutter-mobile": "16px",
+                      "gutter-desktop": "32px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "display-lg-mobile": ["Inter"],
+                      "display-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col py-8 px-4 z-50">
+    <div class="mb-10 px-2 flex items-center gap-3">
+        <div class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg">
+            <span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+        </div>
+        <div>
+            <h2 class="text-label-lg font-label-lg font-bold text-primary">Recruitment Division</h2>
+            <p class="text-xs text-on-surface-variant">Task Management</p>
+        </div>
+    </div>
+    <button class="mb-8 w-full bg-secondary-container text-on-secondary-fixed font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-sm">
+        <span class="material-symbols-outlined">add</span>
+        New Request
+    </button>
+    <nav class="flex-1 space-y-1">
+        <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-colors" href="#">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="text-label-lg font-label-lg">Overview</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg transition-transform active:scale-95" href="#">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment_ind</span>
+            <span class="text-label-lg font-label-lg">My Tasks</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-colors" href="#">
+            <span class="material-symbols-outlined">group</span>
+            <span class="text-label-lg font-label-lg">Team Tasks</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-colors" href="#">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <span class="text-label-lg font-label-lg">Calendar</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-colors" href="#">
+            <span class="material-symbols-outlined">archive</span>
+            <span class="text-label-lg font-label-lg">Archives</span>
+        </a>
+    </nav>
+    <div class="mt-auto space-y-1 pt-4 border-t border-outline-variant">
+        <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-colors" href="#">
+            <span class="material-symbols-outlined">settings</span>
+            <span class="text-label-lg font-label-lg">Settings</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-colors" href="#">
+            <span class="material-symbols-outlined">contact_support</span>
+            <span class="text-label-lg font-label-lg">Support</span>
+        </a>
+    </div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex flex-col min-h-screen">
+    <!-- TopAppBar -->
+    <header class="w-full top-0 sticky bg-surface border-b border-outline-variant z-40">
+        <div class="flex justify-between items-center h-16 px-margin-desktop max-w-container-max mx-auto">
+            <div class="flex items-center gap-8">
+                <h1 class="text-headline-md font-headline-md font-bold text-primary">GovJobs Portal</h1>
+                <nav class="hidden md:flex gap-6">
+                    <a class="text-on-surface-variant hover:text-primary text-label-lg font-label-lg transition-colors" href="#">Dashboard</a>
+                    <a class="text-on-surface-variant hover:text-primary text-label-lg font-label-lg transition-colors" href="#">Job Postings</a>
+                    <a class="text-on-surface-variant hover:text-primary text-label-lg font-label-lg transition-colors" href="#">Applications</a>
+                    <a class="text-primary border-b-2 border-secondary font-bold pb-1 text-label-lg font-label-lg" href="#">Tasks</a>
+                    <a class="text-on-surface-variant hover:text-primary text-label-lg font-label-lg transition-colors" href="#">Reports</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative hidden sm:block">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-body-md">search</span>
+                    <input class="bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-2 text-label-lg focus:ring-2 focus:ring-primary focus:outline-none w-64" placeholder="Global search..." type="text"/>
+                </div>
+                <button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors relative">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+                </button>
+                <button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
+                    <span class="material-symbols-outlined">help</span>
+                </button>
+                <div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+                    <img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a government official in a sharp dark suit against a soft gray background. The individual has a confident yet approachable expression. The image is crisp, high-resolution, and projects institutional authority and reliability, consistent with a clean and professional administrative portal aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7wocys2qrn73yQM614gNZ0rq6QHpvasKWxoEaj3Z_O2deVGjXIxN24Z-DoYszrhNyWLkL1NZv1KmRHv7zbCg8_caGQoGWAFzU_AhHnYlNrNdGSB8co-3syudLUMzbDbU9otIzHSqDIKncBK9_b-DsdEvHD7xchGgD2eHL3LORGV53saduvvJ9XVj0C-EHVPdjsDCPoyEx8-tLHEcOIDvu5rmK-Mr-G-nLNSWnIulgowhe_AVxhT3EE6zPybxekTWoj7PPEU4YBt0"/>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Canvas -->
+    <div class="p-margin-desktop max-w-container-max mx-auto w-full space-y-8">
+        <!-- Page Header Section -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+                <h2 class="text-headline-lg font-headline-lg text-primary">My Priority Tasks</h2>
+                <p class="text-body-md text-on-surface-variant mt-2">Manage and track your active recruitment workflows and administrative deadlines.</p>
+            </div>
+            <div class="flex gap-3">
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">filter_list</span>
+                    <select class="appearance-none bg-surface border border-outline-variant rounded-lg pl-10 pr-10 py-3 text-label-lg font-label-lg focus:ring-2 focus:ring-primary focus:border-transparent cursor-pointer">
+                        <option>All Tasks</option>
+                        <option>Due Soon</option>
+                        <option>Overdue</option>
+                        <option>Completed</option>
+                    </select>
+                </div>
+                <button class="bg-secondary-container text-on-secondary-fixed font-bold px-6 py-3 rounded-lg flex items-center gap-2 hover:opacity-90 transition-all shadow-sm">
+                    <span class="material-symbols-outlined">add_task</span>
+                    New Task
+                </button>
+            </div>
+        </div>
+        <!-- Search and Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter-desktop">
+            <div class="md:col-span-3 bg-surface border border-outline-variant rounded-lg p-2 flex items-center">
+                <span class="material-symbols-outlined px-3 text-on-surface-variant">search</span>
+                <input class="flex-1 border-none focus:ring-0 bg-transparent text-body-md py-2" placeholder="Search tasks by title, applicant name, or reference ID..." type="text"/>
+                <kbd class="hidden sm:inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-on-surface-variant bg-surface-container-low border border-outline-variant rounded-lg mr-2">
+                    <span class="text-[10px]">⌘</span>K
+                </kbd>
+            </div>
+            <div class="bg-primary text-white p-4 rounded-lg flex items-center justify-between shadow-sm">
+                <div>
+                    <p class="text-label-sm opacity-80">Remaining for Today</p>
+                    <p class="text-headline-md font-headline-md">08</p>
+                </div>
+                <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                    <span class="material-symbols-outlined">pending_actions</span>
+                </div>
+            </div>
+        </div>
+        <!-- Task Grid/List -->
+        <div class="space-y-4">
+            <!-- Task Card: Overdue -->
+            <div class="task-card bg-surface border-2 border-error-container p-6 rounded-lg flex flex-col md:flex-row md:items-center gap-6 transition-all hover:bg-white relative overflow-hidden group">
+                <div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="bg-error-container text-on-error-container text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded">Overdue</span>
+                        <span class="text-label-sm text-on-surface-variant">REF-2023-0492</span>
+                    </div>
+                    <h3 class="text-headline-md font-headline-md text-primary group-hover:text-primary-container transition-colors">Verify Applicant Credentials</h3>
+                    <p class="text-body-md text-on-surface-variant mt-1">Review academic transcripts and professional certifications for Senior Urban Planner position.</p>
+                </div>
+                <div class="flex flex-col md:items-end gap-3 min-w-[200px]">
+                    <div class="flex items-center gap-2">
+                        <img alt="John Doe" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A portrait photo of a professional male employee in his 40s wearing glasses and a crisp blue shirt, used as a user avatar for a task management portal. The lighting is bright and even, suitable for a professional corporate environment. High clarity and minimal distraction in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArGgRIqsTRNdCVfq_mKcZ2XfC5-hWNCAPQDmAz0TvG73nSF7nZ58TaVdg_IX5312bAqu3v-Sx2uR_Bnfm9xVvfeYjacpq0XPvph5eUP-n6hV27qH532W9jG3TsLI7iWWESliruG3ybuGKAOQkq6-I1vkL1rNomVqWrXCyItCthtdOc-VbM1lOgc7gS6a1ZXnVufVVrKYfCh88VousOP3H37ZuGh0jsQXnU0mA2nQ574yupA2pi87GR6nvYMCyVFEANrIaGg3Tnr9Y"/>
+                        <span class="text-label-lg font-label-lg text-on-surface">Johnathan Doe</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-error font-bold">
+                        <span class="material-symbols-outlined text-[20px]">event_busy</span>
+                        <span class="text-label-lg">Due: Oct 12, 2023</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors">
+                        <span class="material-symbols-outlined">more_vert</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Task Card: Standard -->
+            <div class="task-card bg-surface border border-outline-variant p-6 rounded-lg flex flex-col md:flex-row md:items-center gap-6 transition-all hover:bg-white hover:shadow-md">
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="bg-primary-container text-on-primary-fixed text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded">Background Check</span>
+                        <span class="text-label-sm text-on-surface-variant">REF-2023-0511</span>
+                    </div>
+                    <h3 class="text-headline-md font-headline-md text-primary">Final Interview Scheduling</h3>
+                    <p class="text-body-md text-on-surface-variant mt-1">Coordinate availability between the Department Head and the top 3 candidates for the Civil Engineer role.</p>
+                </div>
+                <div class="flex flex-col md:items-end gap-3 min-w-[200px]">
+                    <div class="flex items-center gap-2">
+                        <img alt="Sarah Reed" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A professional headshot of a female human resources manager in her early 30s. She is smiling warmly and wearing a smart beige blazer. The background is a blurred office environment with soft morning light. The image exudes a sense of professional warmth and organizational excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2z15V-bDtv41CjnvHQ3XG7Vc36c6E4297vb7lfHCWYfdLbPYoDIg-h1SVAcVF1w8t9Q6hvxsJNuX-SSNeRLloGLQBzVN7qzwmuoulGugOlqv5qwqS-BQwK_bO7Cw-u_-WGBCt2ExTwvCG9fLqoOxvLT2G3_7yOYuZOSKFZwAWnVzqlPl88ZmRkPrCJ6lzqoKx3zLjWqeqgk30l2oWd4svMx4mRt8hTSgvFwYC-DItVrgfI0Fl_UqybAHRuKTaitXzcD4K3rfWr2A"/>
+                        <span class="text-label-lg font-label-lg text-on-surface">Sarah Reed</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-on-surface-variant">
+                        <span class="material-symbols-outlined text-[20px]">calendar_today</span>
+                        <span class="text-label-lg">Due: Oct 28, 2023</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors">
+                        <span class="material-symbols-outlined">more_vert</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Task Card: Standard -->
+            <div class="task-card bg-surface border border-outline-variant p-6 rounded-lg flex flex-col md:flex-row md:items-center gap-6 transition-all hover:bg-white hover:shadow-md">
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="bg-secondary-container text-on-secondary-fixed-variant text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded">Security Clearance</span>
+                        <span class="text-label-sm text-on-surface-variant">REF-2023-0524</span>
+                    </div>
+                    <h3 class="text-headline-md font-headline-md text-primary">Budgetary Approval Review</h3>
+                    <p class="text-body-md text-on-surface-variant mt-1">Review the financial allocation for the upcoming Q4 recruitment cycle across all departments.</p>
+                </div>
+                <div class="flex flex-col md:items-end gap-3 min-w-[200px]">
+                    <div class="flex items-center gap-2">
+                        <img alt="Marcus Kim" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A professional photo of a middle-aged male executive of East Asian descent, wearing a dark navy suit and a white shirt. He has a serious, focused expression suitable for a high-level government administrative role. The image is set against a neutral, sophisticated background with professional studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKkwTWD2v1ZgKUagZBqyjHi2lkGOoehZoRRPLXtuQW6BzjCAKZ5CVdMot_MUlwXw3Ab3SL1HE6trn5B_Fg0s79_flEwOWtdfb2O9l244eAehvu7VU8XPTmIOnD3UaMVdZW2pxxxirdxwjATM-8SmE68rdhZbjhpJbORWVGgBAy8v22ydowAaSB_lL-iQifkXa3IKrQjoQh_yG2yNHRhFFFi7kHNN3y-BhBL0jIi2tpPBL4-oxCUO_1YHoVBWVHWQ6lJaUrr7cW3i8"/>
+                        <span class="text-label-lg font-label-lg text-on-surface">Marcus Kim</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-on-surface-variant">
+                        <span class="material-symbols-outlined text-[20px]">calendar_today</span>
+                        <span class="text-label-lg">Due: Nov 02, 2023</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors">
+                        <span class="material-symbols-outlined">more_vert</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Task Card: Late -->
+            <div class="task-card bg-surface border-2 border-error-container p-6 rounded-lg flex flex-col md:flex-row md:items-center gap-6 transition-all hover:bg-white relative overflow-hidden group">
+                <div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="bg-error-container text-on-error-container text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded">Late</span>
+                        <span class="text-label-sm text-on-surface-variant">REF-2023-0488</span>
+                    </div>
+                    <h3 class="text-headline-md font-headline-md text-primary">Departmental Compliance Audit</h3>
+                    <p class="text-body-md text-on-surface-variant mt-1">Submit the monthly hiring compliance report to the Oversight Committee.</p>
+                </div>
+                <div class="flex flex-col md:items-end gap-3 min-w-[200px]">
+                    <div class="flex items-center gap-2">
+                        <img alt="Anita Lee" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A close-up professional headshot of a female administrative officer in her 50s. She wears a conservative dark gray blazer and a pearl necklace. Her expression is disciplined and professional. The image quality is high with a slight depth of field, keeping the focus strictly on her face and eyes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-acE2-tzWlaKqijRYvgd42uMU041gvL92CmdPlFdeLA8AZUOENuuw3ziesrGa-w6vQEsIAvI3taPxtSPnNQlR5v0aZ9Xk0co6wJSDoCteXO71_W7mEG3Yi604NQYikC4Bm3SEjGEBFCVbTy5oUFmiuquEhcPl_OLk5U-K28bJe-jhZBFH_AaSYhg6Mwg13ARQhcqxqfmP7KaBofpTz3sWAW67iuKVzOvDkete8GGlxC4_Nh0C4p4pJkwIXT9RSF1Hvfq5K-Pxjpw"/>
+                        <span class="text-label-lg font-label-lg text-on-surface">Anita Lee</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-error font-bold">
+                        <span class="material-symbols-outlined text-[20px]">warning</span>
+                        <span class="text-label-lg">Due: Oct 05, 2023</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors">
+                        <span class="material-symbols-outlined">more_vert</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Pagination / Load More -->
+        <div class="flex flex-col items-center justify-center py-10 border-t border-outline-variant gap-4">
+            <p class="text-label-sm text-on-surface-variant font-medium">Showing 4 of 28 priority tasks</p>
+            <button class="border-2 border-primary text-primary font-bold px-8 py-2 rounded hover:bg-primary-container hover:text-white transition-all focus:ring-3 focus:ring-offset-2 focus:ring-primary">
+                View All Tasks
+            </button>
+        </div>
+    </div>
+</main>
+<!-- Micro-interaction Scripts -->
+<script>
+    document.querySelectorAll('.task-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-2px)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0px)';
+        });
+    });
+
+    // Global search shortcut listener
+    document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+            e.preventDefault();
+            document.querySelector('input[placeholder*="Search tasks"]').focus();
+        }
+    });
+</script>
+</body></html>
