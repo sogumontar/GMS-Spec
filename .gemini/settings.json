@@ -1,0 +1,14 @@
+{
+  "ui": {
+    "showModelInfoInChat": true
+  },
+  "model": {
+    "name": ""
+  },
+  "general": {
+    "notificationMethod": "osc9",
+    "plan": {
+      "modelRouting": true
+    }
+  }
+}

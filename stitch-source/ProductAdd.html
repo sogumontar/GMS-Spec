@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Core Intelligence - Add New Product</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#001c37",
+                    "on-secondary-fixed": "#001d33",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#aec9e7",
+                    "primary-fixed": "#d2e4ff",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#f8f9ff",
+                    "on-primary-container": "#8ebdf9",
+                    "secondary-container": "#c5e0fe",
+                    "surface": "#f8f9ff",
+                    "on-tertiary-fixed": "#171c1f",
+                    "background": "#f8f9ff",
+                    "tertiary-fixed-dim": "#c3c7cb",
+                    "outline-variant": "#c2c7d1",
+                    "on-background": "#0b1c30",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#e5eeff",
+                    "primary-fixed-dim": "#a0c9ff",
+                    "on-secondary-fixed-variant": "#2f4961",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-tint": "#2d6197",
+                    "inverse-primary": "#a0c9ff",
+                    "secondary-fixed": "#cee5ff",
+                    "primary-container": "#0f4c81",
+                    "inverse-surface": "#213145",
+                    "primary": "#00355f",
+                    "surface-dim": "#cbdbf5",
+                    "outline": "#727780",
+                    "on-tertiary-container": "#b6bbbf",
+                    "tertiary-fixed": "#dfe3e7",
+                    "secondary": "#47617a",
+                    "on-surface": "#0b1c30",
+                    "on-primary-fixed-variant": "#07497d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#43474b",
+                    "on-secondary-container": "#49637d",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#dce9ff",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#303438",
+                    "surface-variant": "#d3e4fe",
+                    "on-surface-variant": "#42474f",
+                    "tertiary-container": "#464b4e",
+                    "surface-container-low": "#eff4ff"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "spacing": {
+                    "lg": "1.5rem",
+                    "xl": "2rem",
+                    "margin": "2rem",
+                    "base": "4px",
+                    "xs": "0.25rem",
+                    "sm": "0.5rem",
+                    "sidebar-width": "260px",
+                    "gutter": "1.5rem",
+                    "md": "1rem"
+                },
+                "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "h2": ["Manrope"],
+                    "mono": ["Inter"],
+                    "body-md": ["Inter"],
+                    "h1": ["Manrope"],
+                    "body-sm": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "h3": ["Manrope"]
+                },
+                "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "mono": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "h3": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                }
+            },
+        },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .modal-overlay {
+        background-color: rgba(11, 28, 48, 0.4);
+        backdrop-filter: blur(4px);
+    }
+    input:focus, textarea:focus, select:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(0, 53, 95, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- Mock Background for Context (Dashboard Environment) -->
+<div class="fixed inset-0 z-0 flex overflow-hidden">
+  <!-- Predicted SideNavBar -->
+  <aside class="hidden md:flex flex-col h-full py-xl bg-surface dark:bg-on-background border-r border-outline-variant dark:border-outline w-sidebar-width shrink-0">
+    <div class="px-md mb-xl">
+      <div class="flex items-center gap-sm">
+        <div class="w-10 h-10 bg-primary rounded flex items-center justify-center text-on-primary">
+          <span class="material-symbols-outlined">analytics</span>
+        </div>
+        <div>
+          <h1 class="font-h3 text-h3 font-bold text-primary dark:text-primary-fixed-dim leading-none">Admin Portal</h1>
+          <p class="font-label-sm text-label-sm text-on-surface-variant">Enterprise Control</p>
+        </div>
+      </div>
+    </div>
+    <nav class="flex-1">
+      <div class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-outline-variant hover:bg-surface-container transition-all cursor-pointer">
+        <span class="material-symbols-outlined">dashboard</span>
+        <span class="font-label-md text-label-md">Dashboard</span>
+      </div>
+      <div class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-outline-variant hover:bg-surface-container transition-all cursor-pointer">
+        <span class="material-symbols-outlined">analytics</span>
+        <span class="font-label-md text-label-md">Operations Center</span>
+      </div>
+      <div class="flex items-center gap-md px-md py-sm text-primary dark:text-primary-fixed-dim border-l-4 border-primary dark:border-primary-fixed-dim bg-secondary-container/20 transition-all cursor-pointer">
+        <span class="material-symbols-outlined">inventory_2</span>
+        <span class="font-label-md text-label-md">Inventory Management</span>
+      </div>
+      <div class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-outline-variant hover:bg-surface-container transition-all cursor-pointer">
+        <span class="material-symbols-outlined">group</span>
+        <span class="font-label-md text-label-md">User Management</span>
+      </div>
+    </nav>
+    <div class="px-md mt-auto">
+      <div class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-outline-variant hover:bg-surface-container transition-all cursor-pointer">
+        <span class="material-symbols-outlined">logout</span>
+        <span class="font-label-md text-label-md">Log Out</span>
+      </div>
+    </div>
+  </aside>
+  <!-- Main Content (Blured Background) -->
+  <main class="flex-1 overflow-auto bg-surface-container-low p-gutter">
+    <header class="flex justify-between items-center mb-xl">
+      <div>
+        <h2 class="font-h1 text-h1 text-primary">Inventory</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant">Manage your global enterprise assets.</p>
+      </div>
+    </header>
+    <div class="grid grid-cols-12 gap-lg">
+      <div class="col-span-12 bg-surface-container-lowest border border-outline-variant h-96 rounded-xl"></div>
+    </div>
+  </main>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center modal-overlay p-gutter">
+  <!-- Modal Container -->
+  <div class="bg-surface-container-lowest w-full max-w-2xl rounded-xl shadow-xl overflow-hidden border border-outline-variant animate-in fade-in zoom-in duration-300">
+    <!-- Modal Header -->
+    <div class="px-lg py-md border-b border-outline-variant flex items-center justify-between">
+      <div>
+        <h2 class="font-h2 text-h2 text-primary">Add New Product</h2>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Enter the details to create a new inventory entry.</p>
+      </div>
+      <button class="text-on-surface-variant hover:bg-surface-container-high p-sm rounded-full transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <!-- Form Content -->
+    <form class="p-lg" id="productForm">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-lg gap-y-md">
+        <!-- Full Width: Product Name -->
+        <div class="md:col-span-2">
+          <label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="product_name">Product Name</label>
+          <input class="w-full bg-surface-container-lowest border border-outline-variant px-md py-sm rounded text-body-md focus:border-primary transition-colors" id="product_name" name="product_name" placeholder="e.g. Enterprise Server Rack v2" type="text"/>
+        </div>
+        <!-- Column 1: SKU -->
+        <div>
+          <label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="sku">SKU</label>
+          <input class="w-full bg-surface-container-lowest border border-outline-variant px-md py-sm rounded text-body-md focus:border-primary transition-colors" id="sku" name="sku" placeholder="CI-INV-001" type="text"/>
+        </div>
+        <!-- Column 2: Category -->
+        <div>
+          <label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="category">Category</label>
+          <select class="w-full bg-surface-container-lowest border border-outline-variant px-md py-sm rounded text-body-md focus:border-primary transition-colors appearance-none" id="category" name="category">
+            <option value="">Select Category</option>
+            <option value="electronics">Electronics</option>
+            <option value="hardware">Hardware</option>
+            <option value="networking">Networking</option>
+            <option value="furniture">Furniture</option>
+          </select>
+        </div>
+        <!-- Full Width: Description -->
+        <div class="md:col-span-2">
+          <label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="description">Description</label>
+          <textarea class="w-full bg-surface-container-lowest border border-outline-variant px-md py-sm rounded text-body-md focus:border-primary transition-colors resize-none" id="description" name="description" placeholder="Detailed technical specifications and usage guidelines..." rows="3"></textarea>
+        </div>
+        <!-- Column 1: Price -->
+        <div class="relative">
+          <label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="price">Price</label>
+          <div class="relative">
+            <span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-body-md">$</span>
+            <input class="w-full bg-surface-container-lowest border border-outline-variant pl-8 pr-md py-sm rounded text-body-md focus:border-primary transition-colors" id="price" name="price" placeholder="0.00" step="0.01" type="number"/>
+          </div>
+        </div>
+        <!-- Column 2: Stock Quantity -->
+        <div>
+          <label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="quantity">Stock Quantity</label>
+          <input class="w-full bg-surface-container-lowest border border-outline-variant px-md py-sm rounded text-body-md focus:border-primary transition-colors" id="quantity" name="quantity" placeholder="0" type="number"/>
+        </div>
+        <!-- Full Width (or col 1/2 as preferred): Warehouse Location -->
+        <div class="md:col-span-2">
+          <label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="warehouse">Warehouse Location</label>
+          <div class="relative">
+            <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline text-[20px]">location_on</span>
+            <input class="w-full bg-surface-container-lowest border border-outline-variant pl-10 pr-md py-sm rounded text-body-md focus:border-primary transition-colors" id="warehouse" name="warehouse" placeholder="e.g. North Sector, Bay 14" type="text"/>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Buttons -->
+      <div class="mt-xl flex items-center justify-end gap-md">
+        <button class="px-lg py-sm border border-outline text-primary font-label-md rounded hover:bg-surface-container transition-all active:scale-[0.98]" type="button">
+          Cancel
+        </button>
+        <button class="px-lg py-sm bg-primary text-on-primary font-label-md rounded shadow-sm hover:opacity-90 transition-all active:scale-[0.98] flex items-center gap-xs" type="submit">
+          <span class="material-symbols-outlined text-[18px]">save</span>
+          Save Product
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- UI Background Texture -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[-1]" style="background-image: radial-gradient(#00355f 0.5px, transparent 0.5px); background-size: 24px 24px;"></div>
+<script>
+  // Micro-interactions
+  document.getElementById('productForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+
+      // Visual feedback
+      btn.disabled = true;
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Saving...';
+
+      setTimeout(() => {
+          btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Success';
+          btn.classList.replace('bg-primary', 'bg-green-700');
+
+          setTimeout(() => {
+              // Reset or close modal logic would go here
+              btn.disabled = false;
+              btn.innerHTML = originalText;
+              btn.classList.replace('bg-green-700', 'bg-primary');
+          }, 2000);
+      }, 1500);
+  });
+
+  // Close on escape
+  window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+          // Logic to hide modal
+      }
+  });
+</script>
+</body></html>
